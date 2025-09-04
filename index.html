@@ -83,15 +83,21 @@
       border-radius:999px; background:#0a121a; color:#cfe5ff
     }
 
-  .stage{
-  min-height: 60vh;               /* 舞台至少佔 60% 螢幕高度 */
+  .stage {
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;         /* 垂直置中 */
+  justify-content:center;
   gap:16px;
-  padding:24px 20px;
+  padding: calc(env(safe-area-inset-top, 0px) + 60px) 20px 30px; 
+  /* ↑ 上方自動包含 iPhone 安全區，外加 60px 緩衝 */
   text-align:center;
+}
+
+    @media (max-width: 768px) {
+  .stage {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 80px);
+  }
 }
 
     .counter{font-size:14px; letter-spacing:.4px; color:var(--muted)}
